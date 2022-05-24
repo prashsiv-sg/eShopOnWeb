@@ -17,14 +17,6 @@ steps:
 - task: NuGetCommand@2
   inputs:
     restoreSolution: '$(solution)'
-
-- task: VSBuild@1
-  inputs:
-    solution: '$(solution)'
-    msbuildArgs: '/p:DeployOnBuild=false /p:WebPublishMethod=Package  /p:SkipInvalidConfigurations=true'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
-    clean: true
 - task: FortifyOnDemandStatic@8
   inputs:
     FortifyProjects: '$(Build.SourcesDirectory)'
@@ -40,3 +32,6 @@ steps:
     BuildFile: 'eShopOnWeb.sln'
     PollingInterval: 0
     PolicyFailAction: '0'
+  env:
+    JAVA_HOME: $(JAVA_HOME_11_X64)
+    PATH: $(JAVA_HOME_11_X64)/bin;C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\bin;$(PATH)
