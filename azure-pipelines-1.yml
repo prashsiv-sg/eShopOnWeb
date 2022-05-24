@@ -7,7 +7,7 @@ trigger:
 - main
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: windows-2022
 
 steps:
 - script: echo Hello, world!
@@ -15,7 +15,7 @@ steps:
 - task: UseDotNet@2
   inputs:
     packageType: 'sdk'
-    version: '2.2.x'
+    version: '6.0.x'
     vsVersion: '16.10'
 - script: |
     echo Add other tasks to build, test, and deploy your project.
