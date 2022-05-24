@@ -12,11 +12,6 @@ variables:
   buildConfiguration: 'Debug'
 
 steps:
-- task: NuGetToolInstaller@1
-
-- task: NuGetCommand@2
-  inputs:
-    restoreSolution: '$(solution)'
 - task: FortifyOnDemandStatic@8
   inputs:
     FortifyProjects: '$(Build.SourcesDirectory)'
