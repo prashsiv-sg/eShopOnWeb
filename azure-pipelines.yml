@@ -25,3 +25,18 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
     clean: true
+- task: FortifyOnDemandStatic@8
+  inputs:
+    FortifyProjects: '$(Build.SourcesDirectory)'
+    FodConnection: 'Prash_Test_Fortify'
+    ReleaseOptions: '0'
+    ReleaseId: 103101
+    EntitlementSelection: '1'
+    EntitlementPreference: '1'
+    OverrideScanSettings: '2'
+    InProgressScanActionType: '2'
+    RemediationScanPreference: '0'
+    BuildType: 'msbuild'
+    BuildFile: 'eShopOnWeb.sln'
+    PollingInterval: 0
+    PolicyFailAction: '0'
