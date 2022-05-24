@@ -27,6 +27,12 @@ steps:
     command: 'restore'
     restoreSolution: '**/*.sln'
     feedsToUse: 'select'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: '**/*.sln'
+    
 - task: CmdLine@2
   inputs:
     script: 'msbuild eShopOnWeb.sln'
