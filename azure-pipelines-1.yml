@@ -29,3 +29,17 @@ steps:
     configuration: '$(buildConfiguration)'
     clean: true
     
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(Build.SourcesDirectory)'
+    includeRootFolder: true
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    replaceExistingArchive: true
+    verbose: true
+- task: CmdLine@2
+  displayName: Run FoDUploader
+  inputs:
+    script: |
+       java -jar FodUpload.jar -ac APIKEY -z payload.zip -rid 86129 -ep 2 -portalurl https://emea.fortify.com -apiurl https://api.emea.fortify.com -tc sage
+    workingDirectory: '$(Build.ToolsDirectory)/FoDUploader'
