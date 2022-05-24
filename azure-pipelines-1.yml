@@ -25,6 +25,6 @@ steps:
     feedsToUse: 'select'
 - task: CmdLine@2
   inputs:
-    script: 'msbuild --build-file eShopOnWeb.sln'
+    script: 'msbuild eShopOnWeb.sln'
   env:
     PATH: C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\bin;$(PATH)
